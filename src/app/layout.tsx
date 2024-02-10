@@ -33,7 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={oxygen.className}>
+      <body
+        className={oxygen.className}
+        style={{
+          scrollBehavior: "smooth",
+        }}
+      >
         <ThemeProvider attribute="class">
           <ConvexClientProvider>{children}</ConvexClientProvider>
         </ThemeProvider>

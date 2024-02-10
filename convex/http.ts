@@ -1,6 +1,7 @@
 import { httpRouter } from "convex/server";
 
 import { internal } from "./_generated/api";
+import { Id } from "./_generated/dataModel";
 import { httpAction } from "./_generated/server";
 
 const http = httpRouter();
@@ -27,7 +28,9 @@ http.route({
           await ctx.runMutation(internal.users.createUser, {
             user: {
               id: result.data.id,
-              username: result.data.username,
+              username:
+                result.data.username ??
+                result.data.email_addresses[0].email_address,
               first_name: result.data.first_name,
               last_name: result.data.last_name,
               image_url: result.data.image_url,
@@ -37,6 +40,13 @@ http.route({
               last_sign_in_at: result.data.last_sign_in_at,
             },
           });
+          break;
+        case "user.deleted":
+          const userId = result.data.id as string;
+          await ctx.runMutation(internal.users.deleteUser, {
+            id: userId,
+          });
+          break;
       }
       return new Response("Webhook Success", {
         status: 200,

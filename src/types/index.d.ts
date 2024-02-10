@@ -25,3 +25,23 @@ export type SidebarNavItem = {
 export type DashboardConfig = {
   sidebarNav: SidebarNavItem[];
 };
+
+export type Item = {
+  _creationTime: number;
+  _id: string;
+  created_at: number;
+  description: string;
+  images: string[];
+  item_name: string;
+  owner_id: string;
+  owner_info: OwnerInfo | any;
+  rating?: number;
+};
+
+type OwnerInfo = {
+  first_name: string;
+  has_image: boolean;
+  image_url: string;
+  last_name: string;
+  username: string;
+};

@@ -31,8 +31,24 @@ export default defineSchema({
     id: v.optional(v.string()),
     item_name: v.string(),
     owner_id: v.string(),
-    image_url: v.string(),
+    rating: v.optional(v.float64()),
+    images: v.array(v.string()),
+    owner_info: v.object({
+      first_name: v.optional(v.union(v.null(), v.string())),
+      has_image: v.boolean(),
+      image_url: v.string(),
+      last_name: v.optional(v.union(v.null(), v.string())),
+      username: v.optional(v.union(v.null(), v.string())),
+    }),
   })
     .index("by_ownerId", ["owner_id"])
-    .index("by_itemId", ["id"]),
+    .index("by_itemId", ["id"])
+    .index("all_items", [
+      "id",
+      "item_name",
+      "description",
+      "owner_id",
+      "images",
+      "created_at",
+    ]),
 });

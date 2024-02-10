@@ -5,6 +5,7 @@ import {
   Menu,
   MessagesSquare,
   Moon,
+  PlusCircle,
   Settings,
   Settings2,
   Sun,
@@ -24,4 +25,5 @@ export const Icons = {
   settings2: Settings2,
   layers: Layers,
   messages: MessagesSquare,
+  add: PlusCircle,
 };

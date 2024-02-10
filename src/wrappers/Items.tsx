@@ -1,107 +1,82 @@
 "use client";
 
-import { Card, Col, Grid, Metric, Text } from "@tremor/react";
-import { useQuery } from "convex/react";
+import { User } from "@clerk/clerk-sdk-node";
+import { Card, Metric, Text } from "@tremor/react";
 import { MessageCircleIcon } from "lucide-react";
 import Image from "next/image";
-import { api } from "../../convex/_generated/api";
 import { useRouter } from "next/navigation";
+import { Item } from "../types/index";
 
-interface Item {
-  _id: string;
-  item_available: boolean;
-  item_category: string;
-  item_condition: string;
-  item_description: string;
-  item_image: string;
-  item_location: string;
-  item_name: string;
-  item_price: string;
-  seller_avatar: string;
-  seller_email: string;
-  seller_id: number;
-  seller_name: string;
-  seller_rating: number;
-}
-
-const ItemCard = ({ item }: { item: Item }) => {
-    const router = useRouter();
-    return (
-        <Card>
-            <div className="flex flex-row gap-4 items-center mb-2">
-                <Image
-                    src={item.seller_avatar}
-                    alt={item.seller_name}
-                    className="rounded-full"
-                    width={50}
-                    height={50}
-                />
-                <div className="w-full ">
-                    <Text className="text-lg w-full whitespace-nowrap">
-                        {item.seller_name}
-                    </Text>
-                    <Metric className="text-md">
-                        Rating: {Math.round(item.seller_rating * 100) / 100}
-                    </Metric>
-                </div>
-                <MessageCircleIcon size={48} className="cursor-pointer" onClick={() => router.push(`/dashboard/messages/${item.seller_id}`)} />
-            </div>
-            <Image
-                src={item.item_image}
-                alt={item.item_name}
-                style={{ maxWidth: "100%", height: "auto" }}
-                className="rounded-lg mb-2"
-                width={300}
-                height={300}
-            />
-
-            <Text className="text-xl">{item.item_name}</Text>
-        </Card>
-    );
-}
+const ItemCard = ({ item, currentUser }: { item: Item; currentUser: User }) => {
+  const router = useRouter();
+  const firstName = item.owner_info.first_name;
+  const lastName = item.owner_info.last_name ?? "";
+  const altName = item.owner_info.username;
+  return (
+    <Card className="flex flex-col p-4 gap-4 w-[300px]">
+      <div className="flex flex-row items-center justify-between mb-4 gap-12">
+        <Image
+          src={item.owner_info.image_url}
+          alt={item.owner_info.first_name + "Profile Picture"}
+          className="rounded-full mr-5"
+          width={50}
+          height={50}
+        />
+        <div className="w-full flex flex-col items-start">
+          <Text className="text-lg w-full whitespace-nowrap">{altName}</Text>
+          <Metric className="text-md">
+            Rating: {Math.round(item.rating ?? 0 * 100) / 100 || "None Yet"}
+          </Metric>
+        </div>
+        {currentUser.id !== item.owner_id && (
+          <MessageCircleIcon
+            size={48}
+            className="cursor-pointer ml-4"
+            onClick={() => router.push(`/dashboard/messages/${item.owner_id}`)}
+          />
+        )}
+      </div>
+      <div className="flex flex-col gap-2">
+        {item.images.map((image) => (
+          <Image
+            key={item._id + image}
+            src={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/${image}`}
+            alt={item.item_name}
+            style={{ width: "300px", height: "300px", objectFit: "cover" }}
+            className="rounded-lg mb-2"
+            width={300}
+            height={300}
+          />
+        ))}
+      </div>
+      <Text className="mx-4 text-xl text-white">{item.item_name}</Text>
+    </Card>
+  );
+};
 
 const Items = ({
   serverItems,
+  currentUser,
 }: {
-  serverItems: {
-    _id: string;
-    item_available: boolean;
-    item_category: string;
-    item_condition: string;
-    item_description: string;
-    item_image: string;
-    item_location: string;
-    item_name: string;
-    item_price: string;
-    seller_avatar: string;
-    seller_email: string;
-    seller_id: number;
-    seller_name: string;
-    seller_rating: number;
-  }[];
+  serverItems: Item[];
+  currentUser: User | null;
 }) => {
-  const items = useQuery(api.items.get);
+  if (!serverItems) {
+    return <div>Loading...</div>;
+  }
+
+  if (currentUser === null) {
+    return <div>Not logged in</div>;
+  }
 
   return (
-    <Grid
-      numItems={serverItems?.length || 0}
-      numItemsSm={2}
-      numItemsLg={4}
-      numItemsMd={3}
-      className="gap-2"
-    >
-      {(serverItems || items).map((item) => (
-        <Col
-          key={item._id}
-          numColSpan={1}
-          numColSpanSm={1}
-          numColSpanMd={1}
-          numColSpanLg={1}
-        >
-          <ItemCard item={item} />
-        </Col>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {serverItems.map((item) => (
+        <div key={item._id} className="w-fit mx-auto">
+          <ItemCard currentUser={currentUser} item={item} />
+        </div>
       ))}
-    </Grid>
+    </div>
   );
 };
 

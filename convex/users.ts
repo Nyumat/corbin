@@ -1,4 +1,4 @@
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 import {
   MutationCtx,
   QueryCtx,
@@ -38,17 +38,31 @@ export const createMessageRoom = mutation({
 export const createUser = internalMutation({
   args: { user: userValues },
   handler: async (ctx, args) => {
+    const username = args.user.username;
     const user = await ctx.db
       .query("users")
-      .filter((q) => q.eq(q.field("id"), args.user.id))
+      .filter((q) => q.eq(q.field("username"), username))
       .first();
     if (user) {
-      console.log("User already exists");
-      return user;
-    } else {
-      const user = await ctx.db.insert("users", args.user);
-      return user;
+      return;
     }
+    await ctx.db.insert("users", args.user);
+  },
+});
+
+export const deleteUser = internalMutation({
+  args: { id: v.string() },
+  handler: async (ctx, args) => {
+    const userId = args.id;
+    const user = await ctx.db
+      .query("users")
+      .filter((q) => q.eq(q.field("id"), userId))
+      .first();
+    if (!user) {
+      throw new ConvexError("User not found");
+    }
+    const id = user._id;
+    await ctx.db.delete(id);
   },
 });
 

@@ -21,7 +21,6 @@ export default async function DashboardHeader({
     return null;
   }
 
-  console.log(user);
   return (
     <header
       className={cn(
@@ -38,7 +37,7 @@ export default async function DashboardHeader({
           imageUrl: user.imageUrl,
           firstName: user.firstName,
           lastName: user.lastName,
-          username: user.username,
+          username: user.username ?? user.emailAddresses[0].emailAddress,
           hasImage: user.hasImage,
         }}
       />

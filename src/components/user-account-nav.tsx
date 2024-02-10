@@ -38,11 +38,6 @@ export default function UserAccountNav({ user }: UserAccountNavProps) {
       <DropdownMenuContent align="end">
         <div className="text-md p-2 flex flex-col">
           {user.username && <h3 className="font-medium">{user.username}</h3>}
-          {/* {user.emailAddresses && (
-            <p className="text-sm text-gray-1">
-              {user.emailAddresses[0].emailAddress}
-            </p>
-          )} */}
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut(() => router.push("/"))}>

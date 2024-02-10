@@ -1,5 +1,4 @@
 import DashboardHeader from "@/components/dashboard-header";
-import PublishDialog from "@/components/dialog";
 import DashboardShell from "@/components/shell";
 import { totalMembersData } from "@/lib/data";
 import {
@@ -11,23 +10,20 @@ import {
   Text,
   Title,
 } from "@tremor/react";
-import { ConvexHttpClient } from "convex/browser";
-import { api } from "../../../convex/_generated/api";
+import { Plus } from "lucide-react";
+import Link from "next/link";
 
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL ?? "");
-
-export const dynamic = "force-dynamic";
-
-export default async function Page() {
-  const users = convex.query(api.users.get);
+export default function Page() {
   return (
     <DashboardShell>
       <DashboardHeader title="Home" />
-      <div className="flex lg:flex-row gap-4 flex-col px-5">
-        <Card className="rounded-lg lg:w-[70%] mx-auto h-1/2">
+      <div className="gap-5 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="rounded-lg w-full mx-auto h-full">
           <Flex justifyContent="between" alignItems="center" className="gap-2">
             <Text>Add New Listing</Text>
-            <PublishDialog />
+            <Link href="/dashboard/new">
+              <Plus size={24} />
+            </Link>
           </Flex>
         </Card>
         <Card className="rounded-lg">
