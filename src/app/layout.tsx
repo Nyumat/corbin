@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import ConvexClientProvider from "@/wrappers/ConvexClientComponent";
 import type { Metadata } from "next";
 import { Bebas_Neue, Oxygen, Ubuntu } from "next/font/google";
+import { Suspense } from "react";
 
 const oxygen = Oxygen({
   subsets: ["latin-ext"],
@@ -39,9 +40,11 @@ export default function RootLayout({
           scrollBehavior: "smooth",
         }}
       >
-        <ThemeProvider attribute="class">
-          <ConvexClientProvider>{children}</ConvexClientProvider>
-        </ThemeProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ThemeProvider attribute="class">
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );
