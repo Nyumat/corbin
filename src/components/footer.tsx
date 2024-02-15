@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 flex flex-row gap-1 items-center border-t">
+    <footer className="flex w-full flex-row items-center gap-1 border-t p-4">
       Built by{" "}
       <Link
         href="https://tomnyuma.rocks"

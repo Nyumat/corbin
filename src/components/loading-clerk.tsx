@@ -1,7 +1,7 @@
 import { Vortex } from "react-loader-spinner";
 export default function LoadingClerk() {
   return (
-    <div className="flex flex-row justify-center items-center h-screen bg-black">
+    <div className="flex h-screen flex-row items-center justify-center bg-black">
       <Vortex
         visible={true}
         height="80"

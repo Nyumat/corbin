@@ -17,8 +17,8 @@ export default async function Page({
   const userId = auth?.id ?? "";
   return (
     <>
-      <DashboardShell className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-[95vh] overflow-y-scroll">
-        <div className="flex flex-col h-full">
+      <DashboardShell className="flex h-[95vh] flex-1 flex-col justify-between overflow-y-scroll p-2 sm:p-6">
+        <div className="flex h-full flex-col">
           <MessageHeader receiverId={receiverId} />
           <MessageList
             from={receiverId === userId ? receiverId : userId}

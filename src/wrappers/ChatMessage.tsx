@@ -37,17 +37,17 @@ export default function ChatMessage({
     <div className="flex flex-col space-y-2">
       <div className={`flex items-end ${justifyContent}`}>
         <div
-          className={`flex flex-col space-y-2 text-md max-w-xs mx-2  ${messageClass}`}
+          className={`mx-2 flex max-w-xs flex-col space-y-2 text-base  ${messageClass}`}
         >
-          <div className="px-4 py-2 rounded-lg inline-block bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+          <div className="inline-block rounded-lg bg-gray-300 px-4 py-2 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
             {message.message}
           </div>
-          <div className="text-gray-500 dark:text-gray-400 text-right">
+          <div className="text-right text-gray-500 dark:text-gray-400">
             {formatDate(new Date(message._creationTime))}
           </div>
         </div>
         <div
-          className={`w-6 h-6 rounded-full overflow-hidden ${imageOrder} align-middle`}
+          className={`size-6 overflow-hidden rounded-full ${imageOrder} align-middle`}
         >
           <Image
             src={sender === message.from ? fromUserImage : toUserImage}

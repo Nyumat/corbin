@@ -62,9 +62,9 @@ export default function ChatCard({ chat }: { chat: Chat }) {
     <>
       <Link
         href={`/dashboard/messages/${from === user?.id ? to : from}`}
-        className="flex items-center space-x-3 p-2 dark:hover:bg-neutral-900 rounded-lg w-full cursor-pointer transition-all hover:bg-neutral-300/50 border border-neutral-300/50"
+        className="flex w-full cursor-pointer items-center space-x-3 rounded-lg border border-neutral-300/50 p-2 transition-all hover:bg-neutral-300/50 dark:hover:bg-neutral-900"
       >
-        <div className="flex-1 text-left space-y-2">
+        <div className="flex-1 space-y-2 text-left">
           <div className="text-sm md:text-2xl">
             {user?.id === to ? fromUser?.username : toUser?.username}
           </div>
@@ -73,7 +73,7 @@ export default function ChatCard({ chat }: { chat: Chat }) {
               ? chat.last_message_content.slice(0, 50)
               : "No messages yet"}
           </p>
-          <p className="text-xs text-gray-500 md:text-md">
+          <p className="text-xs text-gray-500 md:text-base">
             {formatDate(new Date(chat.last_message_at))}
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function ChatCard({ chat }: { chat: Chat }) {
             height={50}
             className="rounded-full"
           />
-          <span className="absolute bottom-0 right-0 block h-2 w-2 rounded-full bg-green-500"></span>
+          <span className="absolute bottom-0 right-0 block size-2 rounded-full bg-green-500"></span>
         </div>
         <div className="relative">
           <Image
@@ -95,7 +95,7 @@ export default function ChatCard({ chat }: { chat: Chat }) {
             height={50}
             className="rounded-full"
           />
-          <span className="absolute bottom-0 right-0 block h-2 w-2 rounded-full bg-green-500"></span>
+          <span className="absolute bottom-0 right-0 block size-2 rounded-full bg-green-500"></span>
         </div>
       </Link>
     </>

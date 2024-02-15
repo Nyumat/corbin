@@ -11,9 +11,9 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col  gap-5 h-full">
-      <h1 className="font-medium text-lg">Dashboard</h1>
-      <nav className="flex flex-col  flex-1 gap-2">
+    <div className="flex h-full  flex-col gap-5">
+      <h1 className="text-lg font-medium">Dashboard</h1>
+      <nav className="flex flex-1  flex-col gap-2">
         {dashboardConfig.sidebarNav.map((link, i) => {
           const Icon = Icons[link.icon];
           return (
@@ -32,7 +32,7 @@ export default function Nav() {
         })}
       </nav>
 
-      <div className="w-full flex justify-end">
+      <div className="flex w-full justify-end">
         <ThemeToggle />
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function ChatList({ id }: { id: string }) {
     }) ?? [];
   const availableUsers = useQuery(api.users.getAllUsers);
   return (
-    <div className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch h-[100dvh]">
+    <div className="flex h-[100dvh] flex-col space-y-4 overflow-y-auto p-3">
       <AddChatForm users={availableUsers} />
       {chats.map((chat: any, index: number) => (
         <ChatCard key={index} chat={chat} />

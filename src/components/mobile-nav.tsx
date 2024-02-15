@@ -16,7 +16,7 @@ export default function MobileNav() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="h-10 w-10  items-center justify-center p-2 hidden hover:bg-gray-2 transition-colors outline-none rounded-lg max-md:flex">
+      <DropdownMenuTrigger className="hidden size-10  items-center justify-center rounded-lg p-2 outline-none transition-colors hover:bg-gray-2 max-md:flex">
         <Icons.menu size={20} />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

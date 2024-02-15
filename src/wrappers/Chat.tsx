@@ -33,20 +33,20 @@ export default function Chat({ params }: { params: string }) {
 
   return (
     <div>
-      <div className="border-t-2 border-neutral-200 dark:border-gray-200/50 px-4 pt-4 mb-2 sm:mb-0">
+      <div className="mb-2 border-t-2 border-neutral-200 px-4 pt-4 dark:border-gray-200/50 sm:mb-0">
         <form className="relative flex" onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Write your message!"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full focus:outline-none focus:placeholder-neutral-400 placeholder-neutral-300 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-200 rounded-md py-3"
+            className="w-full rounded-md bg-neutral-100 py-3 placeholder:text-neutral-300 focus:outline-none focus:placeholder:text-neutral-400 dark:bg-neutral-800 dark:text-neutral-200"
           />
-          <div className="absolute inset-y-0 flex items-center mx-1 right-0">
+          <div className="absolute inset-y-0 right-0 mx-1 flex items-center">
             <button
               type="submit"
               onClick={handleSendMessage}
-              className="bg-blue-500 text-white rounded-md px-4 py-2"
+              className="rounded-md bg-blue-500 px-4 py-2 text-white"
             >
               Send
             </button>

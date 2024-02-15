@@ -38,7 +38,7 @@ export default function Profile() {
                   <TableCell>
                     <Text>{item.course}</Text>
                   </TableCell>
-                  <TableCell className="flex flex-row gap-4 items-center">
+                  <TableCell className="flex flex-row items-center gap-4">
                     <Progress value={item.progress} />
                     {item.progress + "%"}
                   </TableCell>

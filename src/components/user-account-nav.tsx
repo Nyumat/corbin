@@ -2,7 +2,6 @@
 import { getCapitalLettersOfName } from "@/lib/utils";
 import { useClerk } from "@clerk/nextjs";
 import { User } from "@clerk/nextjs/server";
-import { useConvexAuth } from "convex/react";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -25,7 +24,7 @@ export default function UserAccountNav({ user }: UserAccountNavProps) {
   const router = useRouter();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="outline-none cursor-pointer" asChild>
+      <DropdownMenuTrigger className="cursor-pointer outline-none" asChild>
         <Avatar>
           <AvatarImage src={user?.imageUrl as string} />
           <AvatarFallback>
@@ -36,7 +35,7 @@ export default function UserAccountNav({ user }: UserAccountNavProps) {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <div className="text-md p-2 flex flex-col">
+        <div className="flex flex-col p-2 text-base">
           {user.username && <h3 className="font-medium">{user.username}</h3>}
         </div>
         <DropdownMenuSeparator />

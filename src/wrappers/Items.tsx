@@ -30,7 +30,7 @@ const ItemCard = ({ item, currentUser }: { item: Item; currentUser: User }) => {
   };
 
   return (
-    <Card className="flex flex-col gap-2 max-w-[300px] p-4">
+    <Card className="flex max-w-[300px] flex-col gap-2 p-4">
       <div className="flex flex-row items-center justify-between">
         {item.images.map((image) => (
           <Image
@@ -38,22 +38,22 @@ const ItemCard = ({ item, currentUser }: { item: Item; currentUser: User }) => {
             src={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/${image}`}
             alt={item.item_name}
             style={{ width: "200px", height: "200px", objectFit: "cover" }}
-            className="rounded-lg mb-2"
+            className="mb-2 rounded-lg"
             width={300}
             height={300}
           />
         ))}
       </div>
-      <div className="flex flex-row items-center justify-start mb-4">
+      <div className="mb-4 flex flex-row items-center justify-start">
         <Image
           src={item.owner_info.image_url}
           alt={item.owner_info.first_name + "Profile Picture"}
-          className="rounded-full mx-2"
+          className="mx-2 rounded-full"
           width={30}
           height={30}
         />
-        <div className="w-full flex flex-col items-start">
-          <Text className="text-lg w-full whitespace-nowrap">
+        <div className="flex w-full flex-col items-start">
+          <Text className="w-full whitespace-nowrap text-lg">
             {altName.includes("@") ? altName.split("@")[0] : altName}
           </Text>
           <Metric className="text-xs">
@@ -66,7 +66,7 @@ const ItemCard = ({ item, currentUser }: { item: Item; currentUser: User }) => {
             className="flex flex-row items-center justify-between"
             onClick={handleWantsToChat}
           >
-            <Text className="text-xs dark:text-white cursor-pointer  hover:underline bg-[#6c9a23] rounded-md px-2 py-1">
+            <Text className="cursor-pointer rounded-md bg-[#6c9a23]  px-2 py-1 text-xs hover:underline dark:text-white">
               Message
             </Text>
           </div>
@@ -93,7 +93,7 @@ const Items = ({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
       {serverItems.map((item) => (
         <ItemCard currentUser={currentUser} item={item} key={item._id} />
       ))}

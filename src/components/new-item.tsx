@@ -46,7 +46,7 @@ export default function NewItemForm() {
   };
 
   return (
-    <div className="flex flex-col gap-4 mx-12">
+    <div className="mx-12 flex flex-col gap-4">
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -126,7 +126,7 @@ export default function NewItemForm() {
                     height={100}
                     alt={`Image of ${itemName}`}
                     key={image}
-                    className="max-w-xs max-h-32"
+                    className="max-h-32 max-w-xs"
                   />
                 ))}
               </div>
@@ -148,7 +148,7 @@ export default function NewItemForm() {
             onClick={() => {
               resetErrors();
             }}
-            className="w-full dark:text-white bg-gray-500/20 hover:bg-gray-600/40"
+            className="w-full bg-gray-500/20 hover:bg-gray-600/40 dark:text-white"
           >
             Publish Item
           </Button>
@@ -157,16 +157,16 @@ export default function NewItemForm() {
 
       <Toast.Provider swipeDirection="right">
         <Toast.Root
-          className="dark:bg-gray-700 bg-gray-500 rounded-md shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] p-[15px] grid [grid-template-areas:_'title_action'_'description_action'] grid-cols-[auto_max-content] gap-x-[15px] items-center data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+          className="grid grid-cols-[auto_max-content] items-center gap-x-[15px] rounded-md bg-gray-500 p-[15px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] [grid-template-areas:_'title_action'_'description_action'] data-[swipe=cancel]:translate-x-0 data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[state=closed]:animate-hide data-[state=open]:animate-slideIn data-[swipe=end]:animate-swipeOut data-[swipe=cancel]:transition-[transform_200ms_ease-out] dark:bg-gray-700"
           open={open}
           onOpenChange={setOpen}
         >
-          <Toast.Title className="[grid-area:_title] mb-[5px] font-medium text-slate12 text-[15px]">
+          <Toast.Title className="mb-[5px] text-[15px] font-medium text-slate12 [grid-area:_title]">
             Item Published
           </Toast.Title>
           <Toast.Description asChild>
             <time
-              className="[grid-area:_description] m-0 text-slate11 text-[13px] leading-[1.3]"
+              className="m-0 text-[13px] leading-[1.3] text-slate11 [grid-area:_description]"
               dateTime={eventDateRef.current.toISOString()}
             >
               {eventDateRef.current.toLocaleString()}
@@ -174,7 +174,7 @@ export default function NewItemForm() {
           </Toast.Description>
           <Toast.Action className="[grid-area:_action]" asChild altText="Undo">
             <button
-              className="inline-flex items-center justify-center rounded font-medium text-xs px-[10px] leading-[25px] h-[25px] bg-green2 text-green11 shadow-[inset_0_0_0_1px] shadow-green7 hover:shadow-[inset_0_0_0_1px] hover:shadow-green8 focus:shadow-[0_0_0_2px] focus:shadow-green8"
+              className="inline-flex h-[25px] items-center justify-center rounded bg-green2 px-[10px] text-xs font-medium leading-[25px] text-green11 shadow-[inset_0_0_0_1px] shadow-green7 hover:shadow-[inset_0_0_0_1px] hover:shadow-green8 focus:shadow-[0_0_0_2px] focus:shadow-green8"
               onClick={async () => {
                 if (!itemId) return;
                 await undoCreation({ id: itemId, images: itemImages });
@@ -190,7 +190,7 @@ export default function NewItemForm() {
             </button>
           </Toast.Action>
         </Toast.Root>
-        <Toast.Viewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
+        <Toast.Viewport className="fixed bottom-0 right-0 z-[2147483647] m-0 flex w-[390px] max-w-[100vw] list-none flex-col gap-[10px] p-[var(--viewport-padding)] outline-none [--viewport-padding:_25px]" />
       </Toast.Provider>
 
       <div className="mt-6">

@@ -7,7 +7,9 @@
         "preview": "next build && next start",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "lint:debug": "eslint . --ext .ts,.tsx --debug",
+        "lint:fix": "eslint . --ext .ts,.tsx --fix"
     },
     "dependencies": {
         "@clerk/clerk-sdk-node": "^4.13.7",
@@ -36,6 +38,7 @@
         "convex": "^1.8.0",
         "eslint": "8.47.0",
         "eslint-config-next": "13.4.19",
+        "eslint-plugin-tailwindcss": "^3.14.2",
         "framer-motion": "^11.0.3",
         "lucide-react": "^0.316.0",
         "mini-svg-data-uri": "^1.4.4",
@@ -55,6 +58,7 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@typescript-eslint/parser": "^7.0.1",
         "autoprefixer": "^10.0.1",
         "eslint": "^8",
         "eslint-config-next": "14.1.0",

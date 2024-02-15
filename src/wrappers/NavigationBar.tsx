@@ -11,14 +11,14 @@ import ThemeToggle from "../components/theme-toggle";
 export default async function NavigationBar() {
   const user = await currentUser();
   return (
-    <header className="z-50 flex flex-row justify-between items-center py-4 fixed md:sticky top-0  bg-neutral-100/10 dark:bg-neutral-800/10  bg-opacity-95 dark:bg-opacity-5 w-full">
+    <header className="fixed top-0 z-50 flex w-full flex-row items-center justify-between bg-neutral-100/10 py-4 dark:bg-neutral-800/10 md:sticky">
       <Link href="/" title="Home">
         <h1
-          className="pl-8 text-2xl inline-flex justify-center items-center gap-1 select-none cursor-pointer"
+          className="inline-flex cursor-pointer select-none items-center justify-center gap-1 pl-8 text-2xl"
           title="Corbin"
         >
-          <Leaf className="dark:text-[#A3E635] text-[#6c9a23] h-8 w-8" />
-          <h1 className="font-bold dark:text-white text-neutral-950">Corbin</h1>
+          <Leaf className="size-8 text-[#6c9a23] dark:text-[#A3E635]" />
+          <h1 className="font-bold text-neutral-950 dark:text-white">Corbin</h1>
         </h1>
       </Link>
 
@@ -27,8 +27,8 @@ export default async function NavigationBar() {
       </span> */}
 
       <div className="">
-        <nav className="flex md:hidden items-center px-6 justify-center align-middle mx-6">
-          <ul className="flex flex-row justify-center items-center gap-4">
+        <nav className="mx-6 flex items-center justify-center px-6 align-middle md:hidden">
+          <ul className="flex flex-row items-center justify-center gap-4">
             <li title="Toggle Theme">
               <ThemeToggle />
             </li>
@@ -61,7 +61,7 @@ export default async function NavigationBar() {
           </ul>
         </nav>
 
-        <nav className="md:flex hidden items-center mx-6">
+        <nav className="mx-6 hidden items-center md:flex">
           <ul className="flex flex-row items-center space-x-8">
             <li>
               <ThemeToggle />

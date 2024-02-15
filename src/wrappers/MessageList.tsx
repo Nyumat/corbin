@@ -28,7 +28,7 @@ export default function MessageList({ to, from }: any) {
   return (
     <ol
       id="messages"
-      className="flex flex-col-reverse space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch h-[100dvh]"
+      className="flex h-[100dvh] flex-col-reverse space-y-4 overflow-y-auto p-3"
     >
       {serverMessages?.map((message: Message, index: number) => {
         return (
