@@ -72,3 +72,27 @@ export function getFullUser(ctx: QueryCtx | MutationCtx, userId: string) {
     .withIndex("by_userId", (q) => q.eq("id", userId))
     .first();
 }
+
+export const getUserById = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    return await getFullUser(ctx, args.userId);
+  },
+});
+
+export const getAllUsers = query({
+  args: {},
+  handler: async (ctx) => {
+    const users = await ctx.db.query("users").collect();
+
+    const usersWithImage = users.map((user) => {
+      return {
+        username: user.username ?? "Anonymous",
+        image_url: user.image_url,
+        userId: user.id,
+      };
+    });
+
+    return usersWithImage;
+  },
+});

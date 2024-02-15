@@ -13,7 +13,30 @@ export const userValues = v.object({
   username: v.optional(v.union(v.null(), v.string())),
 });
 
+export const messageValues = v.object({
+  created_at: v.float64(),
+  id: v.string(),
+  message: v.string(),
+  to: v.string(),
+  from: v.string(),
+});
+
 export default defineSchema({
+  chats: defineTable({
+    created_at: v.float64(),
+    users: v.array(v.string()),
+    last_message_at: v.float64(),
+    last_message_content: v.string(),
+  }),
+  messages: defineTable({
+    created_at: v.float64(),
+    message: v.string(),
+    to: v.string(),
+    from: v.string(),
+    read_at: v.optional(v.union(v.null(), v.float64())),
+  })
+    .index("by_receiverId", ["to"])
+    .index("by_senderId", ["from"]),
   users: defineTable({
     banned: v.boolean(),
     created_at: v.float64(),

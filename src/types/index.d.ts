@@ -45,3 +45,13 @@ type OwnerInfo = {
   last_name: string;
   username: string;
 };
+
+export type Message = {
+  created_at: number;
+  from: string;
+  message: string;
+  to: string;
+  _creationTime: number;
+  _id: string;
+  read_at?: number | null;
+};

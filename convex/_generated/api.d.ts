@@ -20,6 +20,7 @@ import type * as getUser from "../getUser.js";
 import type * as help from "../help.js";
 import type * as http from "../http.js";
 import type * as items from "../items.js";
+import type * as messages from "../messages.js";
 import type * as users from "../users.js";
 
 /**
@@ -37,6 +38,7 @@ declare const fullApi: ApiFromModules<{
   help: typeof help;
   http: typeof http;
   items: typeof items;
+  messages: typeof messages;
   users: typeof users;
 }>;
 export declare const api: FilterApi<
