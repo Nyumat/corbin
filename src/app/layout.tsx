@@ -1,6 +1,10 @@
 import ThemeProvider from "@/components/theme-provider";
 import "@/styles/globals.css";
 import ConvexClientProvider from "@/wrappers/ConvexClientComponent";
+import {
+  DarkToastContainerWrapper,
+  LightToastContainerWrapper,
+} from "@/wrappers/ToastContainer";
 import type { Metadata } from "next";
 import { Bebas_Neue, Oxygen, Ubuntu } from "next/font/google";
 import { Suspense } from "react";
@@ -43,6 +47,12 @@ export default function RootLayout({
         <Suspense fallback={<div>Loading...</div>}>
           <ThemeProvider attribute="class">
             <ConvexClientProvider>{children}</ConvexClientProvider>
+            <div className="dark:hidden">
+              <LightToastContainerWrapper />
+            </div>
+            <div className="hidden dark:block">
+              <DarkToastContainerWrapper />
+            </div>
           </ThemeProvider>
         </Suspense>
       </body>
