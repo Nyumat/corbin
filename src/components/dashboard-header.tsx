@@ -13,6 +13,7 @@ interface DashboardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export default async function DashboardHeader({
   className,
   title,
+  children,
   ...props
 }: DashboardHeaderProps) {
   let user: User | null = await currentUser();
