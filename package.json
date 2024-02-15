@@ -13,6 +13,7 @@
         "@clerk/clerk-sdk-node": "^4.13.7",
         "@clerk/nextjs": "^4.29.5",
         "@faker-js/faker": "^8.4.0",
+        "@formkit/auto-animate": "^0.8.1",
         "@headlessui/react": "^1.7.18",
         "@headlessui/tailwindcss": "^0.2.0",
         "@radix-ui/colors": "^3.0.0",
@@ -44,6 +45,7 @@
         "react-dom": "^18",
         "react-dropzone": "^14.2.3",
         "react-loader-spinner": "^6.1.6",
+        "react-toastify": "^10.0.4",
         "svix": "^1.16.0",
         "tailwind-merge": "^2.2.1",
         "tailwindcss-animate": "^1.0.6"
