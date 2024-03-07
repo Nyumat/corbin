@@ -9,7 +9,7 @@ export default function DashboardShell({
   ...props
 }: DashboardShellProps) {
   return (
-    <div className={cn("flex flex-col gap-4", className)} {...props}>
+    <div className={cn("flex flex-col", className)} {...props}>
       {children}
     </div>
   );

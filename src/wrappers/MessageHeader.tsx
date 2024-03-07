@@ -36,7 +36,7 @@ export default async function MessageHeader({
       <div className="mb-2 flex justify-between border-b-2 border-gray-200 pb-2 dark:border-gray-200/50 sm:items-center">
         <div className="relative flex items-center space-x-1">
           <div className="relative p-2">
-            <span className="absolute bottom-0 right-2 text-green-500">
+            <span className="absolute bottom-0 right-2 hidden text-green-500 md:block">
               <svg width="20" height="20">
                 <circle cx="7" cy="7" r="7" fill="currentColor"></circle>
               </svg>
@@ -44,13 +44,13 @@ export default async function MessageHeader({
             <Image
               src={receiver.image_url}
               alt="Profile picture"
-              className="size-10 rounded-full sm:size-16"
+              className="size-6 rounded-full md:size-10"
               width={144}
               height={144}
             />
           </div>
           <div className="flex flex-col leading-tight">
-            <div className="mt-1 flex items-center text-lg lg:text-2xl">
+            <div className="mt-1 flex items-center text-sm md:text-lg lg:text-2xl">
               <span className="mr-1">{name ?? receiver.username}</span>
             </div>
             <span className="text-sm text-neutral-600 dark:text-neutral-400 lg:text-lg">

@@ -30,7 +30,9 @@ export default async function DashboardHeader({
       )}
       {...props}
     >
-      <h1 className="flex-1 text-4xl font-medium">{title}</h1>
+      <h1 className="flex-1 text-xl font-medium md:text-2xl lg:text-3xl xl:text-4xl">
+        {title}
+      </h1>
       <ThemeToggle className="hidden max-md:flex" />
       <MobileNav />
       <UserAccountNav

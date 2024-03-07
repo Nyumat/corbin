@@ -19,7 +19,7 @@ export const getMessagesForChat = query({
         )
       )
       .collect();
-    return messages.sort((a, b) => b._creationTime - a._creationTime);
+    return messages.sort((a, b) => a._creationTime - b._creationTime);
   },
 });
 

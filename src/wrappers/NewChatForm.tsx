@@ -34,7 +34,7 @@ export default function AddChatForm({ users }: { users: any }) {
   };
 
   return (
-    <div className="flex items-center space-x-3 p-3">
+    <div className="flex items-center space-x-3">
       <div className="relative w-full">
         <select
           value={selectedUser}
@@ -58,7 +58,7 @@ export default function AddChatForm({ users }: { users: any }) {
       </div>
       <button
         onClick={handleAddChat}
-        className="h-min rounded-md bg-blue-500 px-2 py-1 text-white hover:bg-blue-600"
+        className="h-min rounded-md bg-neutral-700 px-2 py-1 text-white hover:bg-blue-600"
       >
         Message{" "}
         {selectedUser

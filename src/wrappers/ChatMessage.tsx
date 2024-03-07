@@ -42,20 +42,22 @@ export default function ChatMessage({
           <div className="inline-block rounded-lg bg-gray-300 px-4 py-2 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
             {message.message}
           </div>
-          <div className="text-right text-gray-500 dark:text-gray-400">
-            {formatDate(new Date(message._creationTime))}
+          <div className="text-right text-sm text-gray-500 dark:text-gray-400 md:text-lg">
+            {formatDate(new Date(message.created_at))}
           </div>
         </div>
         <div
           className={`size-6 overflow-hidden rounded-full ${imageOrder} align-middle`}
         >
-          <Image
-            src={sender === message.from ? fromUserImage : toUserImage}
-            alt="My profile"
-            objectFit="cover"
-            width={24}
-            height={24}
-          />
+          {(toUserImage || fromUserImage) && (
+            <Image
+              src={sender === message.from ? fromUserImage : toUserImage}
+              alt="My profile"
+              objectFit="cover"
+              width={24}
+              height={24}
+            />
+          )}
         </div>
       </div>
     </div>

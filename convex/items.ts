@@ -17,6 +17,11 @@ export const create = mutation({
       throw new Error("Not authorized");
     }
 
+    const imageSet = new Set(args.images);
+    if (imageSet.size !== args.images.length) {
+      throw new Error("Duplicate image detected");
+    }
+
     const user = await getFullUser(ctx, userId);
 
     if (!user) {
@@ -64,5 +69,60 @@ export const undoCreation = mutation({
     });
 
     return await ctx.db.delete(args.id);
+  },
+});
+
+export const getUserItems = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const user = ctx.auth.getUserIdentity();
+    if (!user) throw new Error("Not authorized");
+    return await ctx.db
+      .query("items")
+      .filter((q) => q.eq(q.field("owner_id"), args.userId))
+      .collect();
+  },
+});
+
+export const _delete = mutation({
+  args: { id: v.id("items") },
+  handler: async (ctx, args) => {
+    const userId = await getUserId(ctx);
+    if (!userId) {
+      throw new Error("Not authorized");
+    }
+
+    const item = await ctx.db.get(args.id);
+
+    if (!item) {
+      throw new Error("Item not found");
+    }
+
+    if (item.owner_id !== userId) {
+      throw new Error("Not authorized");
+    }
+
+    item.images.forEach(async (image: string) => {
+      const imageId = image as Id<"_storage">;
+      await ctx.storage.delete(imageId);
+    });
+
+    return await ctx.db.delete(args.id);
+  },
+});
+
+export const getSingleItem = query({
+  args: { id: v.string() },
+  handler: async (ctx, args) => {
+    const actualId = args.id as Id<"items">;
+    return await ctx.db.get(actualId);
+  },
+});
+
+export const deleteImage = mutation({
+  args: { imageId: v.string() },
+  handler: async (ctx, args) => {
+    const imageId = args.imageId as Id<"_storage">;
+    return await ctx.storage.delete(imageId);
   },
 });

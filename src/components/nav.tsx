@@ -20,7 +20,7 @@ export default function Nav() {
             <Link
               href={link.href}
               className={cn(
-                "gap-5 py-1 text-sm md:text-lg lg:text-2xl xl:text-3xl px-2 rounded-lg flex flex-row transition-colors items-center hover:bg-gray-2",
+                "gap-5 py-1 text-sm md:text-lg lg:text-lg xl:text-xl px-2 rounded-lg flex flex-row transition-colors items-center hover:bg-gray-2",
                 pathname === link.href ? "bg-gray-2" : ""
               )}
               key={i}

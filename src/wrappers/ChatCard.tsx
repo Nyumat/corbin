@@ -62,7 +62,7 @@ export default function ChatCard({ chat }: { chat: Chat }) {
     <>
       <Link
         href={`/dashboard/messages/${from === user?.id ? to : from}`}
-        className="flex w-full cursor-pointer items-center space-x-3 rounded-lg border border-neutral-300/50 p-2 transition-all hover:bg-neutral-300/50 dark:hover:bg-neutral-900"
+        className="flex cursor-pointer items-center space-x-3 rounded-lg border border-neutral-300/50 p-2 transition-all hover:bg-neutral-300/50 dark:hover:bg-neutral-900 lg:w-1/2"
       >
         <div className="flex-1 space-y-2 text-left">
           <div className="text-sm md:text-2xl">
