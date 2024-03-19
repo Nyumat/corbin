@@ -2,13 +2,14 @@
 
 import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../convex/_generated/api";
 
 export default function AddChatForm({ users }: { users: any }) {
   const auth = useUser();
   const [selectedUser, setSelectedUser] = useState("");
+  const [isAddingChat, setIsAddingChat] = useState(false);
   const senderId = auth.user?.id ?? "";
   const addChat = useMutation(api.messages.createChat);
 
@@ -16,7 +17,11 @@ export default function AddChatForm({ users }: { users: any }) {
     setSelectedUser(event.target.value);
   };
 
-  const handleAddChat = async () => {
+  const handleAddChat: React.MouseEventHandler<
+    HTMLButtonElement
+  > = async (): Promise<void> => {
+    if (isAddingChat) return;
+    setIsAddingChat(true);
     if (selectedUser) {
       await addChat({
         senderId: senderId,
@@ -29,9 +34,17 @@ export default function AddChatForm({ users }: { users: any }) {
         } created!`
       );
     } else {
-      alert("Please select a user first.");
+      toast.error("Please select a user to chat with");
     }
+
+    setIsAddingChat(false);
   };
+
+  useEffect(() => {
+    return () => {
+      toast.dismiss();
+    };
+  }, []);
 
   return (
     <div className="flex items-center space-x-3">

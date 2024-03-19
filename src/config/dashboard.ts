@@ -27,11 +27,11 @@ export const dashboardConfig: DashboardConfig = {
       href: "/dashboard/messages",
       icon: "messages",
     },
-    {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: "settings2",
-    },
+    // {
+    //   title: "Settings",
+    //   href: "/dashboard/settings",
+    //   icon: "settings2",
+    // },
     {
       title: "Profile",
       href: "/dashboard/profile",

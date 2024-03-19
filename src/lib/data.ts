@@ -1,4 +1,4 @@
-import { CustomersData, TotalMembers } from "@/types";
+import { TotalMembers } from "@/types";
 
 export const totalMembersData: TotalMembers = [
   {
@@ -51,125 +51,97 @@ export const totalMembersData: TotalMembers = [
   },
 ];
 
-export const customersData: CustomersData = [
+type PastClients = {
+  name: string;
+  item: string;
+  date: Date;
+  message?: string;
+};
+
+export const pastClientsData: PastClients[] = [
   {
-    customer: "John Smith",
-    status: "Enrolled",
-    course: "Digital Marketing Fundamentals",
-    progress: 65,
+    name: "John Smith",
+    item: "XL North Face Puffer Jacket",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Emily Johnson",
-    status: "Enrolled",
-    course: "Social Media Management",
-    progress: 45,
+    name: "Emily Johnson",
+    item: "iPhone 12 Pro Max",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Michael Brown",
-    status: "Enrolled",
-    course: "Web Design Basics",
-    progress: 20,
+    name: "Michael Brown",
+    item: "Black Leather Wallet",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Jessica Davis",
-    status: "Enrolled",
-    course: "Content Writing Techniques",
-    progress: 75,
+    name: "Sam Wilson",
+    item: "Blue Nike Air Force 1",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "William Jones",
-    status: "Enrolled",
-    course: "Graphic Design Essentials",
-    progress: 30,
+    name: "John Smith",
+    item: "XL North Face Puffer Jacket",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Olivia Wilson",
-    status: "Enrolled",
-    course: "Email Marketing Strategies",
-    progress: 10,
+    name: "Emily Johnson",
+    item: "iPhone 12 Pro Max",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Daniel Taylor",
-    status: "Enrolled",
-    course: "UI/UX Design Principles",
-    progress: 50,
+    name: "Michael Brown",
+    item: "Black Leather Wallet",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Sophia Martinez",
-    status: "Enrolled",
-    course: "Search Engine Optimization",
-    progress: 90,
+    name: "Sam Wilson",
+    item: "Blue Nike Air Force 1",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "James Anderson",
-    status: "Enrolled",
-    course: "Video Editing Fundamentals",
-    progress: 15,
+    name: "John Smith",
+    item: "XL North Face Puffer Jacket",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Isabella Thomas",
-    status: "Enrolled",
-    course: "E-commerce Strategy",
-    progress: 60,
+    name: "Emily Johnson",
+    item: "iPhone 12 Pro Max",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "David White",
-    status: "Enrolled",
-    course: "Photography Basics",
-    progress: 85,
+    name: "Michael Brown",
+    item: "Black Leather Wallet",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Emma Garcia",
-    status: "Enrolled",
-    course: "Brand Identity Design",
-    progress: 25,
+    name: "Sam Wilson",
+    item: "Blue Nike Air Force 1",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Joseph Harris",
-    status: "Enrolled",
-    course: "Copywriting Techniques",
-    progress: 40,
+    name: "John Smith",
+    item: "XL North Face Puffer Jacket",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Ava Martin",
-    status: "Enrolled",
-    course: "Social Media Advertising",
-    progress: 70,
+    name: "Emily Johnson",
+    item: "iPhone 12 Pro Max",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Christopher Clark",
-    status: "Enrolled",
-    course: "Mobile App Development",
-    progress: 5,
+    name: "Michael Brown",
+    item: "Black Leather Wallet",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Mia Rodriguez",
-    status: "Enrolled",
-    course: "Data Analytics Fundamentals",
-    progress: 80,
+    name: "Sam Wilson",
+    item: "Blue Nike Air Force 1",
+    date: new Date("2021-10-12"),
   },
   {
-    customer: "Matthew Lewis",
-    status: "Enrolled",
-    course: "Video Marketing Strategies",
-    progress: 55,
-  },
-  {
-    customer: "Elizabeth Lee",
-    status: "Enrolled",
-    course: "User Experience Design",
-    progress: 35,
-  },
-  {
-    customer: "Andrew Scott",
-    status: "Enrolled",
-    course: "Web Development Essentials",
-    progress: 75,
-  },
-  {
-    customer: "Sofia King",
-    status: "Enrolled",
-    course: "Creative Writing Workshop",
-    progress: 20,
+    name: "John Smith",
+    item: "XL North Face Puffer Jacket",
+    date: new Date("2021-10-12"),
   },
 ];

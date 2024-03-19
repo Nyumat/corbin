@@ -67,7 +67,7 @@ export default function Page() {
         </Card>
       </div>
       <div className="px-5">
-        <Card className="rounded-lg ">
+        <Card className="rounded-lg my-4">
           <Title>Course Members</Title>
           <AreaChart
             className="rounded-md"
